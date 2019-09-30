@@ -21,7 +21,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.bg-grey {
+#app .bg-grey {
   background-color: #eee;
+}
+
+#app .card-elevated {
+  box-shadow: -15px 15px 15px 0px #444;
 }
 </style>
