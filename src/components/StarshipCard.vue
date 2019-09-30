@@ -1,0 +1,31 @@
+<template>
+  <div class="col-sm-6 col-md-6 col-lg-4 mb-5">
+    <div class="card bg-grey card-elevated">
+      <img src="../assets/images/starship-1.jpg" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h3 class="card-title font-weight-normal">{{item.name}}</h3>
+        <p class="card-text">{{ item.description }}</p>
+        <a href="#" class="btn btn-outline-secondary float-right">
+          Read more
+          <i class="fas fa fa-angle-right ml-2" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Starship Card",
+  data() {
+    return {
+      cardText:
+        "Some quick example text to build on the card title and make up the bulk of the card's content."
+    };
+  },
+  props: ["item"]
+};
+</script>
+
+<style scoped>
+</style>
