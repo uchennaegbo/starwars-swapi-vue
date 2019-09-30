@@ -11,13 +11,15 @@
         </div>
       </div>
       <div class="container">
-        <div class="row text-white" v-if="genericHeader">
-          <div class="col-12 text-center mb-5" id="header-title">
-            <h1 class="text-uppercase">
-              <img id="starwars-image-title" :src="logo" alt="Star Wars" class="pb-3" />
+        <div class="row text-center text-white" v-if="genericHeader">
+          <div class="col-auto mx-auto" id="header-title">
+            <h1 class>
+              <img id="starwars-image-title" :src="logo" alt="Star Wars" class="pb-2" />
               Directory
             </h1>
-            <p id="header-title-tagline">{{ tagline }}</p>
+          </div>
+          <div class="col-12 mx-auto mb-5">
+            <p id="header-title-tagline" class="mt-3">{{ tagline }}</p>
           </div>
           <div class="col-md-8 mx-auto">
             <SearchForm />
@@ -55,17 +57,15 @@ header {
   background-position: 65% 100%;
   height: 700px;
 }
-
 h1 {
   font-size: 4rem;
   font-weight: 900;
+  border-bottom: 5px solid #fff;
 }
-
 .overlay {
   background-color: rgba(0, 0, 0, 0.4);
   height: 100%;
 }
-
 #site-logo {
   height: 50px;
 }
@@ -76,7 +76,7 @@ h1 {
   height: 70px;
 }
 #header-title-tagline {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
 }
 
 @media only screen and (min-width: 960px) {
