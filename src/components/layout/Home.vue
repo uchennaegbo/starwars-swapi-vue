@@ -9,18 +9,22 @@
           </div>
         </div>
         <div class="row mt-5">
-          <div class="col-sm-6 col-md-6 col-lg-4 mb-5">
-            <div class="card bg-grey">
+          <div
+            class="col-sm-6 col-md-6 col-lg-4 mb-5"
+            v-for="(item, index) in starships"
+            :key="index"
+          >
+            <div class="card bg-grey card-elevated">
               <img src="../../assets/images/starship-1.jpg" class="card-img-top" alt="..." />
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Card title {{item}}</h5>
                 <p class="card-text">
                   Some quick example text to build on the card title and
                   make up the bulk of the card's content.
                 </p>
-                <a href="#" class="btn btn-secondary float-right">
+                <a href="#" class="btn btn-outline-secondary float-right">
                   Read more
-                  <i class="fas fa fa-chevron-right ml-2" aria-hidden="true"></i>
+                  <i class="fas fa fa-angle-right ml-2" aria-hidden="true"></i>
                 </a>
               </div>
             </div>
