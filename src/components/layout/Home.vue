@@ -10,7 +10,12 @@
           <div class="col-lg-1 mt-1 mx-auto divider"></div>
         </div>
         <div class="row mt-5">
-          <StarshipCard v-for="(starship, index) in starships" :key="index" :starship="starship"></StarshipCard>
+          <StarshipCard
+            v-for="(starship, index) in starships"
+            :key="index"
+            :index="index + 1"
+            :starship="starship"
+          ></StarshipCard>
         </div>
         <div class="row">
           <div class="col-5 col-md-4 col-lg-3 mx-auto">
