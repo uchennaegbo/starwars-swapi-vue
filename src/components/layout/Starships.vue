@@ -1,40 +1,20 @@
 <template>
   <main>
-    <!-- Popular Characters -->
-    <article id="popular-characters" class="mt-5 mb-5">
+    <article id class="mt-5 mb-5">
       <div class="container">
         <div class="row">
           <div class="col-12 text-center mt-5">
-            <h2 class="font-weight-bolder">StarWars Characters</h2>
+            <h2 class="font-weight-bolder">StarWars Starships</h2>
           </div>
           <div class="col-lg-1 col-sm-3 col-md-2 col-4 mt-1 mx-auto divider"></div>
         </div>
-
-        <div class="mt-5">
-          <b-form inline>
-            <label class="mr-sm-3 text-uppercase" for="inline-form-custom-select-pref">Filter:</label>
-            <b-form-select
-              class="mb-2 mr-sm-2 mb-sm-0"
-              :value="2"
-              :options="{ '1': 'Male', '2': 'Female', '3': 'Robot' }"
-              id
-            ></b-form-select>
-
-            <label class="mr-sm-3 ml-sm-5 text-uppercase" for="inline-form-custom-select-pref">View:</label>
-            <b-form-select
-              class="mb-2 mr-sm-2 mb-sm-0"
-              :value="1"
-              :options="{ '1': 'Grid', '2': 'List'}"
-              id
-            ></b-form-select>
-          </b-form>
-        </div>
         <div class="row mt-5">
-          <CharacterCard
-            v-for="(character, index) in characters"
+          <StarshipCard
+            v-for="(starship, index) in starships"
             :key="index"
-            :character="character"
-          ></CharacterCard>
+            :index="index + 1"
+            :starship="starship"
+          ></StarshipCard>
         </div>
         <Pagination />
       </div>
@@ -43,43 +23,55 @@
 </template>
 
 <script>
-import CharacterCard from "../CharacterCard.vue";
+import StarshipCard from "../StarshipCard.vue";
 import Pagination from "../Pagination.vue";
 
 export default {
-  name: "Characters",
+  name: "Starships",
   data() {
     return {
-      characters: [
+      starships: [
         {
-          name: "Luke Skywalker",
-          url: "../../assets/images/character-1.jpg",
+          name: "Ghost",
+          url: "../../assets/images/starship-1.jpg",
           description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"
+            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
         },
         {
-          name: "Darth Vader",
-          url: "../../assets/images/character-1.jpg",
+          name: "Correllian Scout",
+          url: "../../assets/images/starship-1.jpg",
           description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"
+            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
         },
         {
-          name: "Princess Leia",
-          url: "../../assets/images/character-1.jpg",
+          name: "Raven's Claw",
+          url: "../../assets/images/starship-1.jpg",
           description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"
+            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
         },
         {
-          name: "Han Solo",
-          url: "../../assets/images/character-1.jpg",
+          name: "Loronar E-9 Explorer",
+          url: "../../assets/images/starship-1.jpg",
           description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"
+            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+        },
+        {
+          name: "Outrider",
+          url: "../../assets/images/starship-1.jpg",
+          description:
+            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+        },
+        {
+          name: "Hellbringer",
+          url: "../../assets/images/starship-1.jpg",
+          description:
+            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
         }
       ]
     };
   },
   components: {
-    CharacterCard,
+    StarshipCard,
     Pagination
   }
 };
