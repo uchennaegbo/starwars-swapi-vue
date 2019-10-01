@@ -7,7 +7,7 @@
           <div class="col-12 text-center mt-5">
             <h2 class="font-weight-bolder">StarWars Characters</h2>
           </div>
-          <div class="col-lg-1 mt-1 mx-auto divider"></div>
+          <div class="col-lg-1 col-sm-3 col-md-2 col-4 mt-1 mx-auto divider"></div>
         </div>
 
         <div class="mt-5">
@@ -20,7 +20,7 @@
               id
             ></b-form-select>
 
-            <label class="mr-sm-3 ml-5 text-uppercase" for="inline-form-custom-select-pref">View:</label>
+            <label class="mr-sm-3 ml-sm-5 text-uppercase" for="inline-form-custom-select-pref">View:</label>
             <b-form-select
               class="mb-2 mr-sm-2 mb-sm-0"
               :value="1"
