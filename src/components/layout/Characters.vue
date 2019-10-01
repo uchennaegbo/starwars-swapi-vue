@@ -16,34 +16,7 @@
             :character="character"
           ></CharacterCard>
         </div>
-        <!-- Pagination -->
-        <div class="row">
-          <div class="col-4 mx-auto pt-5">
-            <nav aria-label="Page navigation example">
-              <ul class="pagination pagination-lg justify-content-center">
-                <li class="page-item">
-                  <a class="page-link text-dark" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link text-dark" href="#">1</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link text-dark" href="#">2</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link text-dark" href="#">3</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link text-dark" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
+        <Pagination />
       </div>
     </article>
   </main>
@@ -51,6 +24,7 @@
 
 <script>
 import CharacterCard from "../CharacterCard.vue";
+import Pagination from "../Pagination.vue";
 
 export default {
   name: "Characters",
@@ -85,7 +59,8 @@ export default {
     };
   },
   components: {
-    CharacterCard
+    CharacterCard,
+    Pagination
   }
 };
 </script> 
