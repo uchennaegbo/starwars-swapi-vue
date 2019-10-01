@@ -33,6 +33,7 @@
           <CharacterCard
             v-for="(character, index) in characters"
             :key="index"
+            :index="index + 1"
             :character="character"
           ></CharacterCard>
         </div>
@@ -53,24 +54,28 @@ export default {
       characters: [
         {
           name: "Luke Skywalker",
+          slug: "luke-skywalker",
           url: "../../assets/images/character-1.jpg",
           description:
             "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"
         },
         {
           name: "Darth Vader",
+          slug: "darth-vader",
           url: "../../assets/images/character-1.jpg",
           description:
             "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"
         },
         {
           name: "Princess Leia",
+          slug: "princess-leia",
           url: "../../assets/images/character-1.jpg",
           description:
             "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"
         },
         {
           name: "Han Solo",
+          slug: "han-solo",
           url: "../../assets/images/character-1.jpg",
           description:
             "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"
