@@ -9,6 +9,26 @@
           </div>
           <div class="col-lg-1 mt-1 mx-auto divider"></div>
         </div>
+
+        <div class="mt-5">
+          <b-form inline>
+            <label class="mr-sm-3 text-uppercase" for="inline-form-custom-select-pref">Filter:</label>
+            <b-form-select
+              class="mb-2 mr-sm-2 mb-sm-0"
+              :value="2"
+              :options="{ '1': 'Male', '2': 'Female', '3': 'Robot' }"
+              id
+            ></b-form-select>
+
+            <label class="mr-sm-3 ml-5 text-uppercase" for="inline-form-custom-select-pref">View:</label>
+            <b-form-select
+              class="mb-2 mr-sm-2 mb-sm-0"
+              :value="1"
+              :options="{ '1': 'Grid', '2': 'List'}"
+              id
+            ></b-form-select>
+          </b-form>
+        </div>
         <div class="row mt-5">
           <CharacterCard
             v-for="(character, index) in characters"
