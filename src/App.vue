@@ -42,4 +42,8 @@ export default {
 #app .borderless {
   border: unset;
 }
+
+#app .divider {
+  border-bottom: 7px solid #000;
+}
 </style>

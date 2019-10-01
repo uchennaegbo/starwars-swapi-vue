@@ -127,7 +127,4 @@ export default {
 </script> 
 
 <style scoped>
-.divider {
-  border-bottom: 7px solid #000;
-}
 </style>
