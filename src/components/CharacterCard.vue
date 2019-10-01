@@ -3,7 +3,11 @@
     <div class="card bg-grey card-elevated">
       <div class="row no-gutters">
         <div class="col-lg-7">
-          <img src="../assets/images/character-1.jpg" class="card-img" alt="..." />
+          <img
+            :src="require(`@/assets/images/character-${character.slug}.jpg`)"
+            class="card-img"
+            :alt="character.name"
+          />
         </div>
         <div class="col-lg-5">
           <div class="card-body">
@@ -25,13 +29,13 @@
 
 <script>
 export default {
-  name: "Character Card",
+  name: "CharacterCard",
   data() {
     return {
       readMoreText: "Read more"
     };
   },
-  props: ["character"]
+  props: ["character", "index"]
 };
 </script>
 
