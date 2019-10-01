@@ -31,4 +31,8 @@ export default {
 #app .card-elevated {
   box-shadow: -15px 15px 15px 0px #444;
 }
+
+#app .card-elevated:hover {
+  box-shadow: -5px 5px 15px 0px #444;
+}
 </style>
