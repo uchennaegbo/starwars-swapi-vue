@@ -10,7 +10,7 @@
           <div class="col-lg-1 mt-1 mx-auto divider"></div>
         </div>
         <div class="row mt-5">
-          <StarshipCard v-for="(item, index) in starships" :key="index" :item="item"></StarshipCard>
+          <StarshipCard v-for="(starship, index) in starships" :key="index" :starship="starship"></StarshipCard>
         </div>
         <div class="row">
           <div class="col-5 col-md-4 col-lg-3 mx-auto">
@@ -26,31 +26,14 @@
           <div class="col-12 text-center mt-5">
             <h2 class="font-weight-bolder">Popular Characters</h2>
           </div>
+          <div class="col-lg-1 mt-1 mx-auto divider"></div>
         </div>
         <div class="row mt-5">
-          <div class="col-sm-6 mb-5">
-            <div class="card bg-grey">
-              <div class="row no-gutters">
-                <div class="col-lg-7">
-                  <img src="../../assets/images/character-1.jpg" class="card-img" alt="..." />
-                </div>
-                <div class="col-lg-5">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is
-                      a little bit longer.
-                    </p>
-                    <a href="#" class="btn btn-secondary">
-                      Read more
-                      <i class="fas fa fa-chevron-right ml-2" aria-hidden="true"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <CharacterCard
+            v-for="(character, index) in characters"
+            :key="index"
+            :character="character"
+          ></CharacterCard>
         </div>
         <div class="row">
           <div class="col-5 col-md-4 col-lg-3 mx-auto">
@@ -64,6 +47,8 @@
 
 <script>
 import StarshipCard from "../StarshipCard.vue";
+import CharacterCard from "../CharacterCard.vue";
+
 export default {
   name: "Home",
   data() {
@@ -106,11 +91,37 @@ export default {
             "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
         }
       ],
-      characters: [1, 2, 3, 4]
+      characters: [
+        {
+          name: "Luke Skywalker",
+          url: "../../assets/images/character-1.jpg",
+          description:
+            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"
+        },
+        {
+          name: "Luke Skywalker",
+          url: "../../assets/images/character-1.jpg",
+          description:
+            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"
+        },
+        {
+          name: "Luke Skywalker",
+          url: "../../assets/images/character-1.jpg",
+          description:
+            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"
+        },
+        {
+          name: "Luke Skywalker",
+          url: "../../assets/images/character-1.jpg",
+          description:
+            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"
+        }
+      ]
     };
   },
   components: {
-    StarshipCard
+    StarshipCard,
+    CharacterCard
   }
 };
 </script> 
