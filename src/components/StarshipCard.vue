@@ -3,10 +3,10 @@
     <div class="card bg-grey card-elevated">
       <img src="../assets/images/starship-1.jpg" class="card-img-top" alt="..." />
       <div class="card-body">
-        <h3 class="card-title font-weight-normal">{{item.name}}</h3>
-        <p class="card-text">{{ item.description }}</p>
+        <h3 class="card-title font-weight-normal">{{starship.name}}</h3>
+        <p class="card-text">{{ starship.description }}</p>
         <a href="#" class="btn btn-outline-secondary float-right">
-          Read more
+          {{ readMoreText }}
           <i class="fas fa fa-angle-right ml-2" aria-hidden="true"></i>
         </a>
       </div>
@@ -19,11 +19,10 @@ export default {
   name: "Starship Card",
   data() {
     return {
-      cardText:
-        "Some quick example text to build on the card title and make up the bulk of the card's content."
+      readMoreText: "Read more"
     };
   },
-  props: ["item"]
+  props: ["starship"]
 };
 </script>
 
