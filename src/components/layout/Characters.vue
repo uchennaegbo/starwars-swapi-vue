@@ -46,41 +46,31 @@
 <script>
 import CharacterCard from "../CharacterCard.vue";
 import Pagination from "../Pagination.vue";
+import axios from "axios";
 
 export default {
   name: "Characters",
+  created() {
+    axios
+      .get(`https://swapi.co/api/people?page=1`)
+      .then(res => {
+        this.characters = res.data.results.map(character => {
+          const slug = character.name.toLowerCase().replace(" ", "-");
+          const gender =
+            character.gender === "n/a" ? "robot" : character.gender;
+          return {
+            name: character.name,
+            slug: slug,
+            birth_year: character.birth_year,
+            gender: gender
+          };
+        });
+      })
+      .catch();
+  },
   data() {
     return {
-      characters: [
-        {
-          name: "Luke Skywalker",
-          slug: "luke-skywalker",
-          url: "../../assets/images/character-1.jpg",
-          description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"
-        },
-        {
-          name: "Darth Vader",
-          slug: "darth-vader",
-          url: "../../assets/images/character-1.jpg",
-          description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"
-        },
-        {
-          name: "Princess Leia",
-          slug: "princess-leia",
-          url: "../../assets/images/character-1.jpg",
-          description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"
-        },
-        {
-          name: "Han Solo",
-          slug: "han-solo",
-          url: "../../assets/images/character-1.jpg",
-          description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"
-        }
-      ]
+      characters: []
     };
   },
   components: {
