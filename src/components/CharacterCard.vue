@@ -3,16 +3,11 @@
     <div class="card bg-grey card-elevated">
       <div class="row no-gutters">
         <div class="col-lg-7">
-          <img
-            :src="require(`@/assets/images/character-${character.slug}.jpg`)"
-            class="card-img"
-            :alt="character.name"
-          />
+          <img :src="characterAvatar" class="card-img" :alt="character.name" />
         </div>
         <div class="col-lg-5">
           <div class="card-body">
             <h3 class="card-title font-weight-bold">{{ character.name }}</h3>
-            <p class="small font-italic">Son of Anakin</p>
             <p class="card-text">
               {{ character.description }}...
               <a
@@ -34,6 +29,15 @@ export default {
     return {
       readMoreText: "Read more"
     };
+  },
+  computed: {
+    characterAvatar() {
+      try {
+        return require(`@/assets/images/character-${this.character.slug}.jpg`);
+      } catch (err) {
+        return require("@/assets/images/character-image-unavailable.png");
+      }
+    }
   },
   props: ["character", "index"]
 };
