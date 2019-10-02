@@ -46,27 +46,12 @@
 <script>
 import CharacterCard from "../CharacterCard.vue";
 import Pagination from "../Pagination.vue";
-import axios from "axios";
+import getCharacters from "../../utils/get.characters.js";
 
 export default {
   name: "Characters",
   created() {
-    axios
-      .get(`https://swapi.co/api/people?page=1`)
-      .then(res => {
-        this.characters = res.data.results.map(character => {
-          const slug = character.name.toLowerCase().replace(" ", "-");
-          const gender =
-            character.gender === "n/a" ? "robot" : character.gender;
-          return {
-            name: character.name,
-            slug: slug,
-            birth_year: character.birth_year,
-            gender: gender
-          };
-        });
-      })
-      .catch();
+    getCharacters().then(characters => (this.characters = characters));
   },
   data() {
     return {
