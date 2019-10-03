@@ -26,6 +26,7 @@
         </div>
       </div>
     </article>
+
     <!-- Popular Characters -->
     <article id="popular-characters" class="mt-5 mb-5">
       <div class="container">
@@ -57,6 +58,7 @@
 import StarshipCard from "../StarshipCard.vue";
 import CharacterCard from "../CharacterCard.vue";
 import Header from "./Header.vue";
+import getCharacters from "../../utils/get.characters.js";
 import axios from "axios";
 
 export default {
@@ -68,34 +70,33 @@ export default {
         this.characters = this.characters2;
         return;
       }
-      try {
-        axios
-          .get(`https://swapi.co/api/people/?search=${input}`)
-          .then(res => (this.characters = res.data.results));
 
-        axios
-          .get(`https://swapi.co/api/starships/?search=${input}`)
-          .then(res => (this.starships = res.data.results));
-      } catch (error) {
-        this.errors.push(error.message);
-      }
+      axios
+        .get(`https://swapi.co/api/people/?search=${input}`)
+        .then(res => (this.characters = res.data.results))
+        .catch(error => this.errors.push(error));
+
+      axios
+        .get(`https://swapi.co/api/starships/?search=${input}`)
+        .then(res => (this.starships = res.data.results))
+        .catch(error => this.errors.push(error));
     }
   },
   mounted() {
-    try {
-      axios.get(`https://swapi.co/api/people`).then(res => {
-        this.characters = res.data.results.slice(0, 4);
-        this.characters2 = res.data.results.slice(0, 4);
-      });
+    getCharacters()
+      .then(res => {
+        this.characters = res.slice(0, 4);
+        this.characters2 = res.slice(0, 4);
+      })
+      .catch(error => this.errors.push(error));
 
-      axios.get(`https://swapi.co/api/starships`).then(response => {
+    axios
+      .get(`https://swapi.co/api/starships`)
+      .then(response => {
         this.starships = response.data.results.slice(0, 6);
         this.starships2 = response.data.results.slice(0, 6);
-      });
-    } catch (error) {
-      this.errors.push(error.message);
-      console.log({ errors });
-    }
+      })
+      .catch(error => this.errors.push(error));
   },
   data() {
     return {
