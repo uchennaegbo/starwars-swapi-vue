@@ -1,6 +1,8 @@
 <template>
   <main>
     <!-- Popular Characters -->
+    <Header />
+
     <article id="popular-characters" class="mt-5 mb-5">
       <div class="container">
         <div class="row">
@@ -61,9 +63,10 @@ export default {
   components: {
     CharacterCard,
     Pagination
-  }
+  },
+
 };
-</script> 
+</script>
 
 <style scoped>
 </style>
