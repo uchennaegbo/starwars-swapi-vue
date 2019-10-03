@@ -1,6 +1,6 @@
 <template>
   <div class="col-sm-6 mb-5">
-    <div class="card bg-grey card-elevated">
+    <div class="card bg-grey shadow-lg">
       <div class="row no-gutters">
         <div class="col-lg-7">
           <img :src="characterAvatar" class="card-img" :alt="character.name" />
@@ -34,7 +34,9 @@ export default {
       try {
         return require(`@/assets/images/character-${this.character.slug}.jpg`);
       } catch (err) {
-        return require("@/assets/images/character-image-unavailable.png");
+        return require(`@/assets/images/character-${Math.ceil(
+          Math.random() * 4
+        )}.jpg`);
       }
     }
   },
@@ -46,5 +48,10 @@ export default {
 .read-more-link {
   border-bottom: 2px solid #333;
   display: inline-block;
+}
+
+img {
+  height: 18rem;
+  width: 18rem;
 }
 </style>
