@@ -1,5 +1,7 @@
 <template>
   <main>
+    <Header @searching="search($event)" />
+
     <!-- Popular Starships -->
     <article id="popular-starships" class="mb-5 mt-md-5">
       <div class="container">
@@ -54,87 +56,44 @@
 <script>
 import StarshipCard from "../StarshipCard.vue";
 import CharacterCard from "../CharacterCard.vue";
+import Header from "./Header.vue";
+import axios from "axios";
 
 export default {
   name: "Home",
+  methods: {
+    search(input) {
+      if (input.trim() === "") {
+        this.starships = this.starshipsCopy;
+        this.characters = this.characters2;
+        return;
+      }
+      axios
+        .get(`https://swapi.co/api/people?search=${input}`)
+        .then(res => (this.characters = res.data.results));
+    }
+  },
+  mounted() {
+    axios.get("https://swapi.co/api/people").then(res => {
+      this.characters = res.data.results.slice(0, 4);
+      this.characters2 = res.data.results.slice(0, 4);
+    });
+  },
   data() {
     return {
-      starships: [
-        {
-          name: "Ghost",
-          url: "../../assets/images/starship-1.jpg",
-          description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
-        },
-        {
-          name: "Correllian Scout",
-          url: "../../assets/images/starship-1.jpg",
-          description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
-        },
-        {
-          name: "Raven's Claw",
-          url: "../../assets/images/starship-1.jpg",
-          description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
-        },
-        {
-          name: "Loronar E-9 Explorer",
-          url: "../../assets/images/starship-1.jpg",
-          description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
-        },
-        {
-          name: "Outrider",
-          url: "../../assets/images/starship-1.jpg",
-          description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
-        },
-        {
-          name: "Hellbringer",
-          url: "../../assets/images/starship-1.jpg",
-          description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
-        }
-      ],
-      characters: [
-        {
-          name: "Luke Skywalker",
-          slug: "luke-skywalker",
-          url: "../../assets/images/character-1.jpg",
-          description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"
-        },
-        {
-          name: "Darth Vader",
-          slug: "darth-vader",
-          url: "../../assets/images/character-1.jpg",
-          description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"
-        },
-        {
-          name: "Princess Leia",
-          slug: "princess-leia",
-          url: "../../assets/images/character-1.jpg",
-          description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"
-        },
-        {
-          name: "Han Solo",
-          slug: "han-solo",
-          url: "../../assets/images/character-1.jpg",
-          description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer"
-        }
-      ]
+      starships: null,
+      starshipsCopy: null,
+      characters: null,
+      characters2: null,
     };
   },
   components: {
     StarshipCard,
-    CharacterCard
+    CharacterCard,
+    Header
   }
 };
-</script> 
+</script>
 
 <style scoped>
 </style>
