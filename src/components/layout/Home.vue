@@ -27,6 +27,32 @@
       </div>
     </article>
 
+    <!-- Popular Planets -->
+    <article id="popular-starships" class="mb-5 mt-md-5">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center mt-5">
+            <h2 class="font-weight-bolder">Popular Planets</h2>
+          </div>
+          <div class="col-lg-1 mt-1 mx-auto divider"></div>
+        </div>
+        <div class="row mt-5">
+          <PlanetCard
+            v-for="(planet, index) in planets"
+            :key="index"
+            :index="index + 1"
+            :planet="planet"
+          ></PlanetCard>
+        </div>
+        <div class="row">
+          <div class="col-5 col-md-4 col-lg-3 mx-auto">
+            <button class="btn btn-outline-secondary btn-block btn-lg">View More</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
     <!-- Popular Characters -->
     <article id="popular-characters" class="mt-5 mb-5">
       <div class="container">
@@ -57,7 +83,9 @@
 <script>
 import StarshipCard from "../StarshipCard.vue";
 import CharacterCard from "../CharacterCard.vue";
+import PlanetCard from "../PlanetCard.vue";
 import Header from "./Header.vue";
+import Spinner from "../Spinner.vue";
 import getCharacters from "../../utils/get.characters.js";
 import axios from "axios";
 
@@ -67,6 +95,7 @@ export default {
     search(input) {
       if (input.trim() === "") {
         this.starships = this.starships2;
+        this.planets = this.planets2;
         this.characters = this.characters2;
         return;
       }
@@ -91,6 +120,16 @@ export default {
       .catch(error => this.errors.push(error));
 
     axios
+      .get(`https://swapi.co/api/planets`)
+      .then(response => {
+        this.planets = response.data.results.slice(0, 3);
+        this.planets2 = response.data.results.slice(0, 3);
+      })
+      .catch(error => {
+        this.errors.push(error);
+      });
+
+    axios
       .get(`https://swapi.co/api/starships`)
       .then(response => {
         this.starships = response.data.results.slice(0, 6);
@@ -102,6 +141,8 @@ export default {
     return {
       starships: null,
       starships2: null,
+      planets: null,
+      planets2: null,
       characters: null,
       characters2: null,
       errors: []
@@ -109,8 +150,10 @@ export default {
   },
   components: {
     StarshipCard,
+    PlanetCard,
     CharacterCard,
-    Header
+    Header,
+    Spinner
   }
 };
 </script>
