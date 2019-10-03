@@ -25,8 +25,8 @@ export default {
   data() {
     return {
       siteName: "StarWars Directory",
-      authorName: "Kingsley Okeke",
-      authorURL: "https://kingsleyokeke.com"
+      authorName: "Egbo Uchenna",
+      authorURL: "https://www.github.com/EgboUchenna.com"
     };
   },
   methods: {

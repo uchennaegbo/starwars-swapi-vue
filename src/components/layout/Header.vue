@@ -22,7 +22,7 @@
             <p id="header-title-tagline" class="mt-3">{{ tagline }}</p>
           </div>
           <div class="col-md-8 mx-auto">
-            <SearchForm />
+            <SearchForm @searching="search($event)" />
           </div>
         </div>
       </div>
@@ -45,9 +45,14 @@ export default {
   },
   components: {
     SearchForm
+  },
+  methods: {
+    search(input) {
+      this.$emit("searching", input);
+    }
   }
 };
-</script> 
+</script>
 
 <style scoped>
 header {
