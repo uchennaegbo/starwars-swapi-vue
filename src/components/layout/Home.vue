@@ -4,6 +4,8 @@
 
     <!-- Popular Starships -->
     <article id="popular-starships" class="mb-5 mt-md-5">
+      <Spinner v-if="starships === null" />
+
       <div class="container">
         <div class="row">
           <div class="col-12 text-center mt-5">
@@ -29,6 +31,7 @@
 
     <!-- Popular Planets -->
     <article id="popular-starships" class="mb-5 mt-md-5">
+      <Spinner v-if="starships === null" />
 
       <div class="container">
         <div class="row">
@@ -55,6 +58,8 @@
 
     <!-- Popular Characters -->
     <article id="popular-characters" class="mt-5 mb-5">
+      <Spinner v-if="starships === null" />
+
       <div class="container">
         <div class="row">
           <div class="col-12 text-center mt-5">
