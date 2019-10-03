@@ -64,27 +64,46 @@ export default {
   methods: {
     search(input) {
       if (input.trim() === "") {
-        this.starships = this.starshipsCopy;
+        this.starships = this.starships2;
         this.characters = this.characters2;
         return;
       }
-      axios
-        .get(`https://swapi.co/api/people?search=${input}`)
-        .then(res => (this.characters = res.data.results));
+      try {
+        axios
+          .get(`https://swapi.co/api/people/?search=${input}`)
+          .then(res => (this.characters = res.data.results));
+
+        axios
+          .get(`https://swapi.co/api/starships/?search=${input}`)
+          .then(res => (this.starships = res.data.results));
+      } catch (error) {
+        this.errors.push(error.message);
+      }
     }
   },
   mounted() {
-    axios.get("https://swapi.co/api/people").then(res => {
-      this.characters = res.data.results.slice(0, 4);
-      this.characters2 = res.data.results.slice(0, 4);
-    });
+    try {
+      axios.get(`https://swapi.co/api/people`).then(res => {
+        this.characters = res.data.results.slice(0, 4);
+        this.characters2 = res.data.results.slice(0, 4);
+      });
+
+      axios.get(`https://swapi.co/api/starships`).then(response => {
+        this.starships = response.data.results.slice(0, 6);
+        this.starships2 = response.data.results.slice(0, 6);
+      });
+    } catch (error) {
+      this.errors.push(error.message);
+      console.log({ errors });
+    }
   },
   data() {
     return {
       starships: null,
-      starshipsCopy: null,
+      starships2: null,
       characters: null,
       characters2: null,
+      errors: []
     };
   },
   components: {
