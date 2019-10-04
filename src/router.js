@@ -24,6 +24,11 @@ export default new Router({
       path: '/characters',
       name: 'characters',
       component: Characters
-    }
+    },{
+      path: '/starship/:id',
+      name: 'starship',
+      component: () =>
+        import(/* webpackChunkName: "starships" */ './components/views/Starship.vue')
+    },
   ]
 });
