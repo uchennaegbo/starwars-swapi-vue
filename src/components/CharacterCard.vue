@@ -10,10 +10,10 @@
             <h3 class="card-title font-weight-bold">{{ character.name }}</h3>
             <p class="card-text">Gender: {{ character.gender }}</p>
             <p class="card-text">Year of Birth: {{ character.birth_year }}</p>
-            <a
-              class="read-more-link text-dark text-decoration-none font-weight-bold mr-2 mb-3"
-              href="#"
-            >{{ readMoreText }}</a>
+
+            <router-link :to="{ name: 'character', params: { id: character.url.match(/\d+/)[0]}}">
+              <a class="read-more-link text-dark text-decoration-none font-weight-bold mr-2 mb-3">{{ readMoreText }}</a>
+            </router-link>
           </div>
         </div>
       </div>
