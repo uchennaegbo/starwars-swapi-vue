@@ -23,7 +23,9 @@
         </div>
         <div class="row">
           <div class="col-5 col-md-4 col-lg-3 mx-auto">
-            <button class="btn btn-outline-secondary btn-block btn-lg">View More</button>
+            <router-link to="/starships">
+              <button class="btn btn-outline-secondary btn-block btn-lg">View More</button>
+            </router-link>
           </div>
         </div>
       </div>
@@ -31,7 +33,7 @@
 
     <!-- Popular Planets -->
     <article id="popular-starships" class="mb-5 mt-md-5">
-      <Spinner v-if="starships === null" />
+      <Spinner v-if="planets === null" />
 
       <div class="container">
         <div class="row">
@@ -58,7 +60,7 @@
 
     <!-- Popular Characters -->
     <article id="popular-characters" class="mt-5 mb-5">
-      <Spinner v-if="starships === null" />
+      <Spinner v-if="characters === null" />
 
       <div class="container">
         <div class="row">
@@ -77,7 +79,9 @@
         </div>
         <div class="row">
           <div class="col-5 col-md-4 col-lg-3 mx-auto">
-            <button class="btn btn-outline-secondary btn-block btn-lg">View More</button>
+            <router-link to="/characters">
+              <button class="btn btn-outline-secondary btn-block btn-lg">View More</button>
+            </router-link>
           </div>
         </div>
       </div>
@@ -86,12 +90,12 @@
 </template>
 
 <script>
-import StarshipCard from "../StarshipCard.vue";
-import CharacterCard from "../CharacterCard.vue";
-import PlanetCard from "../PlanetCard.vue";
-import Header from "./Header.vue";
-import Spinner from "../Spinner.vue";
 import getCharacters from "../../utils/get.characters.js";
+import CharacterCard from "../CharacterCard.vue";
+import StarshipCard from "../StarshipCard.vue";
+import PlanetCard from "../PlanetCard.vue";
+import Spinner from "../Spinner.vue";
+import Header from "./Header.vue";
 import axios from "axios";
 
 export default {
