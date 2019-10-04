@@ -23,7 +23,8 @@ export default async function(page) {
         mass: character.mass,
         hair_color: character.hair_color,
         skin_color: character.skin_color,
-        eye_color: character.eye_color
+        eye_color: character.eye_color,
+        url: character.url
       };
     });
 
