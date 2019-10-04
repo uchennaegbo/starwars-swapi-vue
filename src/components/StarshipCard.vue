@@ -7,12 +7,20 @@
         :alt="`Picture of ${starship.name} starship`"
       />
       <div class="card-body">
-        <h5 class="card-title font-weight-normal">{{starship.name}}</h5>
-        <p class="card-text">{{ starship.description }}</p>
-        <a href="#" class="btn btn-outline-secondary float-right">
-          {{ readMoreText }}
-          <i class="fas fa fa-angle-right ml-2" aria-hidden="true"></i>
-        </a>
+        <div class="mt-0">
+          <h5 class="card-title font-weight-normal">{{starship.name}}</h5>
+          <h6 class="card-text">{{ starship.model }}</h6>
+          <span class="card-text">
+            <b>Manufacturer :</b>
+            {{starship.manufacturer}}
+          </span>
+        </div>
+        <div class="mt-2 float-right read">
+          <a href="#" class="btn btn-outline-secondary ">
+            {{ readMoreText }}
+            <i class="fas fa fa-long-arrow-right ml-2" aria-hidden="true"></i>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -35,7 +43,21 @@ img {
   max-height: 200px;
 }
 .card {
-  height: 22rem;
-  width: 22rem;
+  height: 23rem;
+  width: 23rem;
+}
+.card-body{
+  position: relative;
+}
+
+.card-text {
+  font-size: 12px;
+  color: rgb(124, 124, 124);
+}
+
+.read {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
 }
 </style>
