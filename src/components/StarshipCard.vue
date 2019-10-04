@@ -16,10 +16,11 @@
           </span>
         </div>
         <div class="mt-2 float-right read">
-          <a href="#" class="btn btn-outline-secondary ">
-            {{ readMoreText }}
-            <i class="fas fa fa-long-arrow-right ml-2" aria-hidden="true"></i>
-          </a>
+          <router-link :to="{ name: 'starship', params: { id: starship.url.match(/\d+/)[0]}}">
+            <a href="#" class="btn btn-outline-secondary">
+              {{ readMoreText }}    &rarr;
+            </a>
+          </router-link>
         </div>
       </div>
     </div>
@@ -46,7 +47,7 @@ img {
   height: 23rem;
   width: 23rem;
 }
-.card-body{
+.card-body {
   position: relative;
 }
 
