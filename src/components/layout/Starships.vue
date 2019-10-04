@@ -8,9 +8,8 @@
           <div class="col-12 text-center mt-5">
             <h2 class="font-weight-bolder">StarWars Starships</h2>
           </div>
-
         </div>
-          <div class="col-lg-1 col-sm-3 col-md-2 col-4 mt-1 mb-4 mx-auto divider"></div>
+        <div class="col-lg-1 col-sm-3 col-md-2 col-4 mt-1 mb-4 mx-auto divider"></div>
         <Spinner v-if="starships === null" />
         <div class="row mt-5">
           <StarshipCard
@@ -37,19 +36,36 @@ export default {
   name: "Starships",
   data() {
     return {
-      starships: null
+      starships: null,
+      starships2: null,
+      errors: []
     };
   },
   mounted() {
     axios
       .get(`https://swapi.co/api/starships`)
       .then(response => {
-        console.log(response.data.results);
-
         this.starships = response.data.results.slice(0, 6);
         this.starships2 = response.data.results.slice(0, 6);
       })
       .catch(error => this.errors.push(error));
+  },
+  methods: {
+    search(search) {
+      if (search.trim() === "") {
+        this.starships = this.starships2;
+        return;
+      }
+
+      axios
+        .get(`https://swapi.co/api/starships/?search=${search}`)
+        .then(response => {
+          this.starships = response.data.results;
+        })
+        .catch(error => {
+          this.errors.push(error);
+        });
+    }
   },
   components: {
     StarshipCard,
