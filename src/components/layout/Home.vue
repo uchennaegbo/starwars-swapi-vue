@@ -52,7 +52,9 @@
         </div>
         <div class="row">
           <div class="col-5 col-md-4 col-lg-3 mx-auto">
-            <button class="btn btn-outline-secondary btn-block btn-lg">View More</button>
+            <router-link to="/planets">
+              <button class="btn btn-outline-secondary btn-block btn-lg">View More</button>
+            </router-link>
           </div>
         </div>
       </div>
