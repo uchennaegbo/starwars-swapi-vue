@@ -1,6 +1,6 @@
 <template>
   <div class="col-sm-6 col-md-6 col-lg-4 mb-5">
-    <router-link class="read-more" v-bind:to="planet.url.split('https://swapi.co/api')[1]">
+    <router-link class="read-more text-decoration-none" v-bind:to="{ name: 'planet', params: { id: planet.url.match(/\d+/)[0]}}">
       <div class="card shadow bg-dark text-white">
         <img
           :src="require(`@/assets/images/planet-${Math.ceil(Math.random() * 3)}.jpg`)"
