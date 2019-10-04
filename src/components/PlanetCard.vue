@@ -1,14 +1,14 @@
 <template>
   <div class="col-sm-6 col-md-6 col-lg-4 mb-5">
     <router-link class="read-more" v-bind:to="planet.url.split('https://swapi.co/api')[1]">
-      <div class="card shadow bg-dark text-white ">
+      <div class="card shadow bg-dark text-white">
         <img
           :src="require(`@/assets/images/planet-${Math.ceil(Math.random() * 3)}.jpg`)"
           left
           alt="Star Wars Logo"
           class="card-img"
         />
-        <div class="card-img-overlay text-right">
+        <div class="card-img-overlay card-text">
           <h5 class="text-lg-left">
             {{planet.name}}
             <br />
@@ -39,5 +39,11 @@ export default {
 <style scoped>
 .planet--image {
   width: 100%;
+}
+
+.card-text {
+  position: relative;
+  bottom: 100px;
+  font-size: 1em;
 }
 </style>
