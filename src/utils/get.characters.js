@@ -1,7 +1,7 @@
 import axios from 'axios';
-
-export default async function(page = 1) {
+export default async function(page) {
   try {
+    page = Math.ceil(Math.random() * 6);
     const response = await axios.get(
       `https://swapi.co/api/people?page=${page}`
     );
@@ -23,7 +23,8 @@ export default async function(page = 1) {
         mass: character.mass,
         hair_color: character.hair_color,
         skin_color: character.skin_color,
-        eye_color: character.eye_color
+        eye_color: character.eye_color,
+        url: character.url
       };
     });
 

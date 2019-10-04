@@ -1,5 +1,5 @@
 <template>
-  <b-form @submit="onSearch">
+  <b-form @keyup="onSearch">
     <div class="input-group mb-2 mr-sm-2">
       <b-form-input
         type="text"
@@ -31,6 +31,7 @@ export default {
   methods: {
     onSearch(evt) {
       evt.preventDefault();
+      this.$emit("searching", this.formInput);
     }
   }
 };
