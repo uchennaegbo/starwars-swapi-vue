@@ -1,7 +1,8 @@
 <template>
   <main>
     <!-- Popular Characters -->
-    <Header />
+    <Header @searching="search($event)" />
+
 
     <article id="popular-characters" class="mt-5 mb-5">
       <div class="container">
@@ -46,9 +47,11 @@
 </template>
 
 <script>
+import getCharacters from "../../utils/get.characters.js";
 import CharacterCard from "../CharacterCard.vue";
 import Pagination from "../Pagination.vue";
-import getCharacters from "../../utils/get.characters.js";
+import Header from "./Header.vue";
+
 
 export default {
   name: "Characters",
@@ -62,7 +65,8 @@ export default {
   },
   components: {
     CharacterCard,
-    Pagination
+    Pagination,
+    Header
   },
 
 };
