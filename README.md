@@ -1,7 +1,7 @@
 # starwars
 
 ### Live Application:
-Click here [starwars-vue](https://festive-brahmagupta-cc32af.netlify.com/).
+Click here [starwars-vue](https://swapi-vue.netlify.com/).
 
 ## Project setup
 ```
